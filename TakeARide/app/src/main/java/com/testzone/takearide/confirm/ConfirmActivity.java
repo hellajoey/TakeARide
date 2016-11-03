@@ -1,15 +1,21 @@
 package com.testzone.takearide.confirm;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.testzone.takearide.R;
 import com.testzone.takearide.app.AppActivity;
 import com.testzone.takearide.model.Fare;
 import com.testzone.takearide.selectfare.SelectFarePresenter;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ConfirmActivity extends AppActivity implements ConfirmView {
 
@@ -17,6 +23,10 @@ public class ConfirmActivity extends AppActivity implements ConfirmView {
 	TextView riderView;
 	@Bind(R.id.fareView)
 	TextView fareView;
+	@Bind(R.id.quantityView)
+	TextView quantityView;
+	@Bind(R.id.confirmButton)
+	Button confirmButton;
 
 	private ConfirmPresenter presenter;
 
@@ -52,9 +62,43 @@ public class ConfirmActivity extends AppActivity implements ConfirmView {
 		presenter.detachView();
 	}
 
+	@OnClick(R.id.moreButton)
+	public void onMoreButtonClick() {
+		presenter.adjustQuantity(1);
+	}
+
+	@OnClick(R.id.fewerButton)
+	public void onFewerButtonClick() {
+		presenter.adjustQuantity(-1);
+	}
+
+	@OnClick(R.id.confirmButton)
+	public void onConfirmButtonClick() {
+		presenter.confirmPurchase();
+	}
+
+	@Override
+	public void setCurrentPurchase(float cost, int quantity) {
+		quantityView.setText(Integer.toString(quantity));
+
+		String priceString = formatCurrency(cost);
+		String text = String.format(getString(R.string.confirm_purchaseOrder), quantity, priceString);
+		confirmButton.setText(text);
+	}
+
+	private String formatCurrency(float price) {
+		NumberFormat numberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault());
+		return numberFormat.format(price);
+	}
+
 	@Override
 	public void setFareViews(String riderType, String fareDescription) {
 		riderView.setText(riderType);
 		fareView.setText(fareDescription);
+	}
+
+	@Override
+	public void displayMessage(int stringId) {
+		Toast.makeText(this, getString(stringId), Toast.LENGTH_LONG).show();
 	}
 }

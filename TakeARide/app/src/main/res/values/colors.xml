@@ -4,5 +4,7 @@
 	<color name="appBackground">#ffffff</color>
 	<color name="titleBackground">#eeeeee</color>
 	<color name="itemBackground">#dddddd</color>
+	<color name="darkButtonBackground">#222222</color>
+	<color name="darkButtonText">#ffffff</color>
 
 </resources>

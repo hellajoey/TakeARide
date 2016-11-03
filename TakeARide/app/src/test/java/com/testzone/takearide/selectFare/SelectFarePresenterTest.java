@@ -1,5 +1,6 @@
 package com.testzone.takearide.selectFare;
 
+import com.testzone.takearide.model.Fare;
 import com.testzone.takearide.model.RiderList;
 import com.testzone.takearide.selectfare.SelectFarePresenter;
 import com.testzone.takearide.selectfare.SelectFareView;
@@ -25,7 +26,9 @@ public class SelectFarePresenterTest {
 	SelectFareView view;
 
 	@Captor
-	private ArgumentCaptor<RiderList.Fare[]> fareList = ArgumentCaptor.forClass(RiderList.Fare[].class);
+	private ArgumentCaptor<String> riderType;
+	@Captor
+	private ArgumentCaptor<Fare[]> fareList = ArgumentCaptor.forClass(Fare[].class);
 
 	private SelectFarePresenter presenter;
 	private String adultFare1Description = "2.5 Hour Ticket";
@@ -33,7 +36,7 @@ public class SelectFarePresenterTest {
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
-		presenter = new SelectFarePresenter(view, RiderList.Rider.TYPE_ADULT);
+		presenter = new SelectFarePresenter(view, RiderList.Rider.ADULT);
 	}
 
 	@After
@@ -53,9 +56,10 @@ public class SelectFarePresenterTest {
 	public void onGetFareListSuccess() {
 		presenter.load();
 
-		verify(view).setFareList(fareList.capture());
+		verify(view).setFareList(riderType.capture(), fareList.capture());
 
 		// Not ideal but it gets the job done with static data
+		assertEquals(riderType.getValue(), RiderList.Rider.ADULT);
 		assertEquals(fareList.getValue()[0].description, adultFare1Description);
 	}
 }

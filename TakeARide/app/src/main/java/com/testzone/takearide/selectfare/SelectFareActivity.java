@@ -67,9 +67,9 @@ public class SelectFareActivity extends AppActivity implements SelectFareView {
 		itemContainer.addView(riderView);
 	}
 
-	private String formatCurrency(float value) {
+	private String formatCurrency(float price) {
 		NumberFormat numberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault());
-		return numberFormat.format(value);
+		return numberFormat.format(price);
 	}
 
 	private View.OnClickListener getOnClickListener(final String riderType, final Fare fare) {
