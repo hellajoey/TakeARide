@@ -14,9 +14,4 @@ public class RiderList {
 		public Fare[] fares;
 		public String subtext;
 	}
-
-	public class Fare {
-		public String description;
-		public float price;
-	}
 }

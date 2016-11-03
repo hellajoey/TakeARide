@@ -10,7 +10,7 @@
 		android:layout_height="wrap_content"
 		android:background="@color/titleBackground"
 		android:padding="@dimen/screenEdge"
-		android:text="@string/selectFare_title"
+		android:text="@string/confirm_title"
 		android:textStyle="bold"/>
 
 	<LinearLayout

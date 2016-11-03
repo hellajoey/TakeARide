@@ -3,9 +3,11 @@ package com.testzone.takearide.selectfare;
 import com.testzone.takearide.R;
 import com.testzone.takearide.data.DataService;
 import com.testzone.takearide.data.handlers.GetFareListHandler;
-import com.testzone.takearide.model.RiderList;
+import com.testzone.takearide.model.Fare;
 
 public class SelectFarePresenter implements GetFareListHandler {
+	public static final String KEY_FARE_DESCRIPTION = "SelectFarePresenter.KEY_FARE_DESCRIPTION";
+	public static final String KEY_FARE_PRICE = "SelectFarePresenter.KEY_FARE_PRICE";
 
 	private DataService dataService;
 	private SelectFareView view;
@@ -31,7 +33,7 @@ public class SelectFarePresenter implements GetFareListHandler {
 	}
 
 	@Override
-	public void onGetFareListSuccess(RiderList.Fare[] fareList) {
+	public void onGetFareListSuccess(Fare[] fareList) {
 		if (view == null) {
 			return;
 		} else if (fareList == null || fareList.length == 0) {

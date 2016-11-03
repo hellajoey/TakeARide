@@ -1,5 +1,6 @@
 package com.testzone.takearide.selectfare;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -7,7 +8,8 @@ import android.widget.Toast;
 
 import com.testzone.takearide.R;
 import com.testzone.takearide.app.AppActivity;
-import com.testzone.takearide.model.RiderList;
+import com.testzone.takearide.confirm.ConfirmActivity;
+import com.testzone.takearide.model.Fare;
 import com.testzone.takearide.selectrider.SelectRiderPresenter;
 import com.testzone.takearide.views.ItemView;
 
@@ -52,7 +54,7 @@ public class SelectFareActivity extends AppActivity implements SelectFareView {
 	}
 
 	@Override
-	public void setFareList(RiderList.Fare[] fareList) {
+	public void setFareList(Fare[] fareList) {
 		itemContainer.removeAllViews();
 
 		for (int i = 0; i < fareList.length; i++) {
@@ -60,7 +62,7 @@ public class SelectFareActivity extends AppActivity implements SelectFareView {
 		}
 	}
 
-	private void setItemView(RiderList.Fare fare) {
+	private void setItemView(Fare fare) {
 		ItemView riderView = new ItemView(this, fare.description, formatCurrency(fare.price), getOnClickListener(fare));
 		itemContainer.addView(riderView);
 	}
@@ -70,11 +72,15 @@ public class SelectFareActivity extends AppActivity implements SelectFareView {
 		return numberFormat.format(value);
 	}
 
-	private View.OnClickListener getOnClickListener(final RiderList.Fare fare) {
+	private View.OnClickListener getOnClickListener(final Fare fare) {
 		return new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				// FIXME: 11/3/16
+				Intent intent = new Intent(SelectFareActivity.this, ConfirmActivity.class);
+				intent.putExtra(SelectFarePresenter.KEY_FARE_DESCRIPTION, fare.description);
+				intent.putExtra(SelectFarePresenter.KEY_FARE_PRICE, fare.price);
+				startActivityForResult(intent, SelectRiderPresenter.RESULT_CODE); // FIXME: 11/3/16 -- this should be passed through
+				overridePendingTransition(0, 0);
 			}
 		};
 	}
