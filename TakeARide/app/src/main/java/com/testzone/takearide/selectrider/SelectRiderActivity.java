@@ -1,6 +1,7 @@
 package com.testzone.takearide.selectrider;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.testzone.takearide.R;
 import com.testzone.takearide.app.AppActivity;
@@ -28,5 +29,10 @@ public class SelectRiderActivity extends AppActivity implements SelectRiderView 
 	public void onDestroy() {
 		super.onDestroy();
 		presenter.detachView();
+	}
+
+	@Override
+	public void displayMessage(int stringId) {
+		Toast.makeText(this, getString(stringId), Toast.LENGTH_LONG).show();
 	}
 }

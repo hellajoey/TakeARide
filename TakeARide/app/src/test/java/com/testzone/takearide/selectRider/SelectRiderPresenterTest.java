@@ -11,18 +11,21 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.verify;
+
 @RunWith(MockitoJUnitRunner.class)
 public class SelectRiderPresenterTest {
 
 	@Mock
-	SelectRiderView mView;
+	SelectRiderView view;
 
 	private SelectRiderPresenter presenter;
 
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
-		presenter = new SelectRiderPresenter(mView);
+		presenter = new SelectRiderPresenter(view);
 	}
 
 	@After
@@ -30,7 +33,9 @@ public class SelectRiderPresenterTest {
 	}
 
 	@Test
-	public void getInt() {
-		presenter.load();
+	public void onGetRiderListError() {
+		int i = any(Integer.class);
+		presenter.onGetRiderListError(i);
+		verify(view).displayMessage(i);
 	}
 }

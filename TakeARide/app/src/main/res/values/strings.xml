@@ -4,4 +4,6 @@
 
 	<string name="selectRider_title">Select Rider</string>
 
+	<string name="errorGetRiderList">There was an error getting the rider list.</string>
+
 </resources>
