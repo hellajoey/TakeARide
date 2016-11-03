@@ -1,5 +1,7 @@
 package com.testzone.takearide.data;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.testzone.takearide.R;
@@ -9,6 +11,7 @@ import com.testzone.takearide.model.Fare;
 import com.testzone.takearide.model.RiderList;
 
 public class DataService {
+	private static final String TAG = "DataService";
 
 	// TODO: 11/3/16 -- Put this in a .json file in assets folder (until we start pulling it from server)
 	private static final String RIDER_LIST_JSON = "{\n" +
@@ -84,5 +87,6 @@ public class DataService {
 
 	public void purchaseTickets(String riderType, Fare fare, int quantity) {
 		// TODO: 11/3/16 -- do whatever you need to do
+		Log.i(TAG, String.format("User purchased %d %s, %s ticket(s) at $%f apiece.", quantity, riderType, fare.description, fare.price));
 	}
 }
