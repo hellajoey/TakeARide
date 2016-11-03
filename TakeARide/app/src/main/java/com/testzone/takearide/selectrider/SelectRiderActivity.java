@@ -1,6 +1,7 @@
 package com.testzone.takearide.selectrider;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -48,21 +49,30 @@ public class SelectRiderActivity extends AppActivity implements SelectRiderView 
 
 		RiderList.Rider adult = riderList.Adult;
 		if (adult != null) {
-			setItemView(adult, R.string.selectRider_adult);
+			setItemView(adult, R.string.selectRider_adult, RiderList.Rider.TYPE_ADULT);
 		}
 		RiderList.Rider child = riderList.Child;
 		if (child != null) {
-			setItemView(child, R.string.selectRider_child);
+			setItemView(child, R.string.selectRider_child, RiderList.Rider.TYPE_CHILD);
 		}
 		RiderList.Rider senior = riderList.Senior;
 		if (senior != null) {
-			setItemView(senior, R.string.selectRider_senior);
+			setItemView(senior, R.string.selectRider_senior, RiderList.Rider.TYPE_SENIOR);
 		}
 	}
 
-	private void setItemView(RiderList.Rider rider, int titleId) {
-		ItemView riderView = new ItemView(this, getString(titleId), rider.subtext);
+	private void setItemView(RiderList.Rider rider, int titleId, String riderType) {
+		ItemView riderView = new ItemView(this, getString(titleId), rider.subtext, getOnClickListener(riderType));
 		itemContainer.addView(riderView);
+	}
+
+	private View.OnClickListener getOnClickListener(final String riderType) {
+		return new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Toast.makeText(SelectRiderActivity.this, riderType, Toast.LENGTH_LONG).show(); // FIXME: 11/2/16 
+			}
+		};
 	}
 
 	@Override

@@ -16,7 +16,7 @@ public class ItemView extends LinearLayout {
 	@Bind(R.id.subtextView)
 	TextView subtextView;
 
-	public ItemView(Context context, String title, String subtext) {
+	public ItemView(Context context, String title, String subtext, OnClickListener listener) {
 		super(context);
 		super.inflate(context, R.layout.view_item, this);
 
@@ -24,5 +24,6 @@ public class ItemView extends LinearLayout {
 
 		titleView.setText(title);
 		subtextView.setText((subtext == null) ? "" : subtext);
+		setOnClickListener(listener);
 	}
 }
