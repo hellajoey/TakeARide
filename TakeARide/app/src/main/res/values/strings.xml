@@ -8,5 +8,6 @@
 	<string name="selectRider_senior">Senior</string>
 
 	<string name="errorGetRiderList">There was an error getting the rider list.</string>
+	<string name="errorGetFareList">There was an error getting the fare list.</string>
 
 </resources>

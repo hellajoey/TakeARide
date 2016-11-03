@@ -12,6 +12,7 @@ public class SplashActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		// prevents color flash on start-up
 		startActivity(new Intent(this, SelectRiderActivity.class));
 		finish();
 	}

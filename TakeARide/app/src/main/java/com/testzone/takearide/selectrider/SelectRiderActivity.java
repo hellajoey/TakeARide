@@ -1,5 +1,6 @@
 package com.testzone.takearide.selectrider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -8,6 +9,7 @@ import android.widget.Toast;
 import com.testzone.takearide.R;
 import com.testzone.takearide.app.AppActivity;
 import com.testzone.takearide.model.RiderList;
+import com.testzone.takearide.selectfare.SelectFareActivity;
 import com.testzone.takearide.views.ItemView;
 
 import butterknife.Bind;
@@ -70,10 +72,15 @@ public class SelectRiderActivity extends AppActivity implements SelectRiderView 
 		return new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				Toast.makeText(SelectRiderActivity.this, riderType, Toast.LENGTH_LONG).show(); // FIXME: 11/2/16 
+				Intent intent = new Intent(SelectRiderActivity.this, SelectFareActivity.class);
+				intent.putExtra(SelectRiderPresenter.KEY_RIDER_TYPE, riderType);
+				startActivityForResult(intent, SelectRiderPresenter.RESULT_CODE);
+				overridePendingTransition(0, 0);
 			}
 		};
 	}
+
+	// FIXME: 11/3/16 -- add onActivityResult
 
 	@Override
 	public void displayMessage(int stringId) {
