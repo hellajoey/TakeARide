@@ -1,7 +1,10 @@
 package com.testzone.takearide.data;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.testzone.takearide.R;
 import com.testzone.takearide.data.handlers.GetRiderListHandler;
+import com.testzone.takearide.model.RiderList;
 
 public class DataService {
 
@@ -33,10 +36,14 @@ public class DataService {
 				"  }\n" +
 				"}";
 
-		if (true) { // FIXME: 11/2/16
+		GsonBuilder builder = new GsonBuilder();
+		Gson gson = builder.create();
+		RiderList riderList = gson.fromJson(jsonString, RiderList.class);
+
+		if (riderList == null) {
 			getRiderListHandler.onGetRiderListError(R.string.errorGetRiderList);
-		} else { // FIXME: 11/2/16
-			getRiderListHandler.onGetRiderListSuccess();
+		} else {
+			getRiderListHandler.onGetRiderListSuccess(riderList);
 		}
 	}
 }
