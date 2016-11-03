@@ -2,6 +2,7 @@
 <resources>
 
 	<color name="appBackground">#ffffff</color>
-	<color name="titleBackground">#eeeeeeee</color>
+	<color name="titleBackground">#eeeeee</color>
+	<color name="itemBackground">#dddddd</color>
 
 </resources>
