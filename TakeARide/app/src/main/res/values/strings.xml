@@ -6,12 +6,12 @@
 	<string name="selectRider_adult">Adult</string>
 	<string name="selectRider_child">Child</string>
 	<string name="selectRider_senior">Senior</string>
+	<string name="selectRider_doneMessage">Thank you for your purchase!</string>
 
 	<string name="selectFare_title">Select Fare</string>
 
 	<string name="confirm_title">Confirm Selection</string>
 	<string name="confirm_purchaseOrder" formatted="false">Buy %d Tickets - %s</string>
-	<string name="confirm_doneMessage">Thank you for your purchase!</string>
 
 	<string name="errorGetRiderList">There was an error getting the rider list.</string>
 	<string name="errorGetFareList">There was an error getting the fare list.</string>

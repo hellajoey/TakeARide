@@ -80,10 +80,17 @@ public class SelectFareActivity extends AppActivity implements SelectFareView {
 				intent.putExtra(SelectFarePresenter.KEY_RIDER_TYPE, riderType);
 				intent.putExtra(SelectFarePresenter.KEY_FARE_DESCRIPTION, fare.description);
 				intent.putExtra(SelectFarePresenter.KEY_FARE_PRICE, fare.price);
-				startActivityForResult(intent, SelectRiderPresenter.RESULT_CODE); // FIXME: 11/3/16 -- this should be passed through
+				startActivityForResult(intent, SelectRiderPresenter.RESULT_CODE);
 				overridePendingTransition(0, 0);
 			}
 		};
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		setResult(resultCode, new Intent());
+		finish();
 	}
 
 	@Override

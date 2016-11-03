@@ -80,7 +80,11 @@ public class SelectRiderActivity extends AppActivity implements SelectRiderView 
 		};
 	}
 
-	// FIXME: 11/3/16 -- add onActivityResult
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		presenter.handleUserConfirmed(resultCode);
+	}
 
 	@Override
 	public void displayMessage(int stringId) {

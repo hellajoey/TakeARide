@@ -41,6 +41,18 @@ public class SelectRiderPresenter implements GetRiderListHandler {
 		}
 	}
 
+	public void handleUserConfirmed(int resultCode) {
+		if (view == null) {
+			return;
+		}
+
+		switch (resultCode) {
+			case RESULT_CODE:
+				view.displayMessage(R.string.selectRider_doneMessage);
+				break;
+		}
+	}
+
 	public void detachView() {
 		view = null;
 		dataService = null;

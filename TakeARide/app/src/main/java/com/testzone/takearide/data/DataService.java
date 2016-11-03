@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.testzone.takearide.R;
 import com.testzone.takearide.data.handlers.GetFareListHandler;
 import com.testzone.takearide.data.handlers.GetRiderListHandler;
+import com.testzone.takearide.model.Fare;
 import com.testzone.takearide.model.RiderList;
 
 public class DataService {
@@ -79,5 +80,9 @@ public class DataService {
 				getFareListHandler.onGetFareListSuccess(rider.fares);
 			}
 		}
+	}
+
+	public void purchaseTickets(String riderType, Fare fare, int quantity) {
+		// TODO: 11/3/16 -- do whatever you need to do
 	}
 }

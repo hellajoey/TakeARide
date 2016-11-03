@@ -1,6 +1,5 @@
 package com.testzone.takearide.confirm;
 
-import com.testzone.takearide.R;
 import com.testzone.takearide.data.DataService;
 import com.testzone.takearide.model.Fare;
 
@@ -35,8 +34,8 @@ public class ConfirmPresenter {
 	}
 
 	public void confirmPurchase() {
-		view.displayMessage(R.string.confirm_doneMessage);
-		// FIXME: 11/3/16 -- need to return home
+		dataService.purchaseTickets(riderType, fare, quantity);
+		view.returnHome();
 	}
 
 	public void detachView() {

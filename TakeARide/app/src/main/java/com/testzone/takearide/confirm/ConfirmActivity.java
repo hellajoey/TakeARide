@@ -1,14 +1,15 @@
 package com.testzone.takearide.confirm;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.testzone.takearide.R;
 import com.testzone.takearide.app.AppActivity;
 import com.testzone.takearide.model.Fare;
 import com.testzone.takearide.selectfare.SelectFarePresenter;
+import com.testzone.takearide.selectrider.SelectRiderPresenter;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -38,7 +39,7 @@ public class ConfirmActivity extends AppActivity implements ConfirmView {
 
 		ButterKnife.bind(this);
 
-		// TODO: 11/3/16 -- Consider sending rider information as a parcelable.
+		// get the rider/fare information
 		Bundle bundle = getIntent().getExtras();
 		String riderType = bundle.getString(SelectFarePresenter.KEY_RIDER_TYPE);
 		String fareDescription = bundle.getString(SelectFarePresenter.KEY_FARE_DESCRIPTION);
@@ -98,7 +99,8 @@ public class ConfirmActivity extends AppActivity implements ConfirmView {
 	}
 
 	@Override
-	public void displayMessage(int stringId) {
-		Toast.makeText(this, getString(stringId), Toast.LENGTH_LONG).show();
+	public void returnHome() {
+		setResult(SelectRiderPresenter.RESULT_CODE, new Intent());
+		finish();
 	}
 }

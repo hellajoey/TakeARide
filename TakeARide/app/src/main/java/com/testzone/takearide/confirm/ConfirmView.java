@@ -5,5 +5,5 @@ public interface ConfirmView {
 
 	void setCurrentPurchase(float cost, int quanity);
 
-	void displayMessage(int stringId);
+	void returnHome();
 }
