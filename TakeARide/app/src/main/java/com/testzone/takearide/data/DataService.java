@@ -62,13 +62,13 @@ public class DataService {
 			RiderList.Rider rider = null;
 
 			switch (riderType) {
-				case RiderList.Rider.TYPE_ADULT:
+				case RiderList.Rider.ADULT:
 					rider = riderList.Adult;
 					break;
-				case RiderList.Rider.TYPE_CHILD:
+				case RiderList.Rider.CHILD:
 					rider = riderList.Child;
 					break;
-				case RiderList.Rider.TYPE_SENIOR:
+				case RiderList.Rider.SENIOR:
 					rider = riderList.Senior;
 					break;
 			}

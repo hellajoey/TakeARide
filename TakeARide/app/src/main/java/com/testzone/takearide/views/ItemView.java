@@ -11,7 +11,7 @@ import butterknife.ButterKnife;
 
 public class ItemView extends LinearLayout {
 
-	@Bind(R.id.titleView)
+	@Bind(R.id.riderView)
 	TextView titleView;
 	@Bind(R.id.subtextView)
 	TextView subtextView;

@@ -7,14 +7,18 @@ public class ConfirmPresenter {
 
 	private DataService dataService;
 	private ConfirmView view;
+	private String riderType;
+	private Fare fare;
 
-	public ConfirmPresenter(ConfirmView view, Fare fare) {
+	public ConfirmPresenter(ConfirmView view, String riderType, Fare fare) {
 		dataService = new DataService(); // TODO: 11/2/16 -- Inject via DI with real implementation.
 		this.view = view;
+		this.riderType = riderType;
+		this.fare = fare;
 	}
 
 	public void load() {
-		// FIXME: 11/3/16
+		view.setFareViews(riderType, fare.description);
 	}
 
 	public void detachView() {

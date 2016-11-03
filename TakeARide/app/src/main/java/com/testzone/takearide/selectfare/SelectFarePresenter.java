@@ -6,6 +6,7 @@ import com.testzone.takearide.data.handlers.GetFareListHandler;
 import com.testzone.takearide.model.Fare;
 
 public class SelectFarePresenter implements GetFareListHandler {
+	public static final String KEY_RIDER_TYPE = "SelectFarePresenter.KEY_RIDER_TYPE";
 	public static final String KEY_FARE_DESCRIPTION = "SelectFarePresenter.KEY_FARE_DESCRIPTION";
 	public static final String KEY_FARE_PRICE = "SelectFarePresenter.KEY_FARE_PRICE";
 
@@ -39,7 +40,7 @@ public class SelectFarePresenter implements GetFareListHandler {
 		} else if (fareList == null || fareList.length == 0) {
 			view.displayMessage(R.string.errorGetFareList);
 		} else {
-			view.setFareList(fareList);
+			view.setFareList(riderType, fareList);
 		}
 	}
 
